@@ -2,10 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
@@ -17,13 +14,9 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./*"
-      ]
+      "~/*": ["./*"]
     },
-    "types": [
-      "@nuxt/types"
-    ]
+    "types": ["@nuxt/types"]
   },
   "include": [
     "assets/**/*.ts",
@@ -35,7 +28,5 @@
     "static/**/*.ts",
     "store/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

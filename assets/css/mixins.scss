@@ -1,0 +1,135 @@
+// ? NOTE: Breakpoint mixins in `_responsive.scss`
+// ? NOTE: Dark mode mixin in `_colors.scss`
+
+// --------------------------------------------
+// Pseudo elements
+
+@mixin pseudo {
+  content: '';
+  position: absolute;
+}
+
+// --------------------------------------------
+// Resets
+
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin button-reset {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  color: inherit;
+}
+
+// --------------------------------------------
+// Sizing
+
+@mixin square($size) {
+  height: $size;
+  width: $size;
+}
+
+@mixin circle($size) {
+  @include square($size);
+
+  border-radius: 50%;
+}
+
+// ------------------------------------
+// Accessibility
+
+@mixin accessible-transition(
+  $properties,
+  $duration: $base-transition,
+  $style: ease
+) {
+  // stylelint-disable-next-line dczajkowski/color-no-non-variables
+  transition-property: #{$properties};
+  transition-duration: $duration;
+  // stylelint-disable-next-line dczajkowski/color-no-non-variables
+  transition-timing-function: #{$style};
+  // stylelint-disable-next-line dczajkowski/color-no-non-variables
+  will-change: #{$properties};
+
+  @media (prefers-reduced-motion) {
+    transition-duration: 0ms;
+  }
+}
+
+@mixin focus-outline {
+  outline: 2px solid var(--brand-primary);
+  box-shadow: 0 0 3px 2px var(--brand-primary);
+  border-radius: 2px;
+}
+
+/** ----------------------------------------
+ * Visually hidden
+ * - Method to hide text visually whilst keeping it there for screen readers
+ *
+ * @link https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/
+ * Mixin styles sourced from: https://github.com/tailwindlabs/tailwindcss/pull/964
+ */
+
+@mixin visually-hidden {
+  border-width: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@mixin undo-visually-hidden {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  position: static;
+  white-space: normal;
+  width: auto;
+}
+
+.vh,
+.visuallyhidden {
+  @include visually-hidden;
+}
+
+// --------------------------------------------
+// Alignment
+
+@mixin abs-vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin abs-horizontal-center {
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+@mixin abs-center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
